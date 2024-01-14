@@ -22,7 +22,7 @@ namespace IntroductionToADO
 		static void showMainMenu(SqlConnection connection)
 		{
 			Console.WriteLine("Выберите опцию: \n1 - Добавить нового автора\n2 - Добавить новую книгу\n3 - Добавить новую книгу и автора\n4 - Показать всех авторов в базе" +
-				"\n5 - Показать все книги в базе\n6 - Удалить автора из базы\n7 - Удалить книгу из базы");
+				"\n5 - Показать все книги в базе\n6 - Показать книги с авторами\n7 - Удалить автора из базы\n8 - Удалить книгу из базы");
 			int option = Convert.ToInt32(Console.ReadLine());
 			chooseOptionOfMainMenu(connection, option);
 		}
@@ -52,15 +52,19 @@ namespace IntroductionToADO
 			}
 			else if (option == 5)
 			{
-				selectAuthorsAndBooksQuery(connection);
+				selectBooksQuery(connection);
 			}
 			else if (option == 6)
 			{
-				deleteAuthorQuery(connection);
+				selectAuthorsAndBooksQuery(connection);
 			}
 			else if (option == 7)
 			{
-				selectAuthorsQuery(connection);
+				deleteAuthorQuery(connection);
+			}
+			else if (option == 8)
+			{
+				deleteBookQuery(connection);
 			}
 		}
 
@@ -111,6 +115,16 @@ namespace IntroductionToADO
 				Console.WriteLine($"{rdr[0]} {rdr[1]} {rdr[2]}");
 			}
 		}
+		static void selectBooksQuery(SqlConnection connection)
+		{
+			string query = @"SELECT * FROM Books";
+			SqlCommand selectCommand = new SqlCommand(query, connection);
+			SqlDataReader rdr = selectCommand.ExecuteReader();
+			while (rdr.Read())
+			{
+				Console.WriteLine($"{rdr[0]} {rdr[1]} {rdr[2]} {rdr[3]} {rdr[4]}");
+			}
+		}
 
 		static void selectAuthorsAndBooksQuery(SqlConnection connection)
 		{
@@ -131,5 +145,14 @@ namespace IntroductionToADO
 			string query = $@"DELETE FROM Authors WHERE Authors.id = {id}";
 			SqlCommand deleteCommand = new SqlCommand(query, connection);
 		}
+
+		static void deleteBookQuery(SqlConnection connection)
+		{
+			Console.WriteLine("Введите id книги");
+			int id = Convert.ToInt32((Console.ReadLine()));	
+			string query = $@"DELETE FROM Authors WHERE Books.id = {id}";
+			SqlCommand deleteCommand = new SqlCommand(query, connection);
+		}
+
 	}
 }
