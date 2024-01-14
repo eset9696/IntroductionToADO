@@ -37,14 +37,14 @@ namespace IntroductionToADO
 			else if (option == 2)
 			{
 				string[] book = addBook();
-				addBookQuery(connection, book[0], book[1], book[3]);
+				addBookQuery(connection, book[0], book[1], book[2]);
 			}
 			else if (option == 3)
 			{
 				string[] authorName = addAuthor();
 				addAuthorQuery(connection, authorName[0], authorName[1]);
 				string[] book = addBook();
-				addBookQuery(connection, book[0], book[1], book[3]);
+				addBookQuery(connection, book[0], book[1].Trim(), book[2].Trim());
 			}
 			else if (option == 4)
 			{
@@ -79,15 +79,14 @@ namespace IntroductionToADO
 		static string[] addBook()
 		{
 			string[] book = new string[3];
-			Console.WriteLine("Введите название книги, цену и количество страниц");
-			book = Console.ReadLine().Split(' ');
+			Console.WriteLine("Введите название книги, цену и количество страниц через запятую");
+			book = Console.ReadLine().Split(',');
 			return book;
 		}
 
 		static void addAuthorQuery(SqlConnection connection, string authorsFirstName, string authorsLastName) 
 		{
 			string newAuthor = $@"IF NOT EXISTS (SELECT * FROM Authors WHERE Authors.first_name = '{authorsFirstName}' AND Authors.last_name = '{authorsLastName}') BEGIN INSERT INTO Authors (first_name, last_name) VALUES('{authorsFirstName}', '{authorsLastName}') END";
-			
 			SqlCommand insertCommand = new SqlCommand(newAuthor, connection);
 			insertCommand.ExecuteNonQuery();
 		}
@@ -95,11 +94,14 @@ namespace IntroductionToADO
 		static void addBookQuery(SqlConnection connection, string title, string price, string pages)
 		{
 			int author_id = chooseAuthorId(connection);
-			string newBook = $@"INSERT INTO Books (author, title, price, pages) VALUES('{author_id}', '{title}', {price}, {pages})";
+			string newBook = $@"IF NOT EXISTS (SELECT * FROM Books WHERE Books.author = {author_id} AND Books.title = '{title}' AND Books.price = {price} AND Books.pages = {pages}) BEGIN INSERT INTO Books (author, title, price, pages) VALUES('{author_id}', '{title}', {price}, {pages}) END";
+			SqlCommand insertCommand = new SqlCommand(newBook, connection);
+			insertCommand.ExecuteNonQuery();
 		}
 
 		static int chooseAuthorId(SqlConnection connection)
 		{
+			Console.WriteLine("Введите id автора из списка");
 			selectAuthorsQuery(connection);
 			int id = Convert.ToInt32(Console.ReadLine());
 			return id;
@@ -114,6 +116,7 @@ namespace IntroductionToADO
 			{
 				Console.WriteLine($"{rdr[0]} {rdr[1]} {rdr[2]}");
 			}
+			rdr.Close();
 		}
 		static void selectBooksQuery(SqlConnection connection)
 		{
@@ -133,7 +136,7 @@ namespace IntroductionToADO
 			SqlDataReader rdr = selectCommand.ExecuteReader();
 			while (rdr.Read())
 			{
-				Console.WriteLine($"{rdr[0]} {rdr[1]}\t\t{rdr[2]}");
+				Console.WriteLine($"{rdr[0]}\t{rdr[1]}\t{rdr[2]}");
 			}
 			rdr.Close();
 		}
@@ -144,6 +147,7 @@ namespace IntroductionToADO
 			int id = Convert.ToInt32((Console.ReadLine()));	
 			string query = $@"DELETE FROM Authors WHERE Authors.id = {id}";
 			SqlCommand deleteCommand = new SqlCommand(query, connection);
+			deleteCommand.ExecuteNonQuery();
 		}
 
 		static void deleteBookQuery(SqlConnection connection)
@@ -152,6 +156,7 @@ namespace IntroductionToADO
 			int id = Convert.ToInt32((Console.ReadLine()));	
 			string query = $@"DELETE FROM Authors WHERE Books.id = {id}";
 			SqlCommand deleteCommand = new SqlCommand(query, connection);
+			deleteCommand.ExecuteNonQuery();
 		}
 
 	}
