@@ -22,7 +22,7 @@ namespace IntroductionToADO
 		static void showMainMenu(SqlConnection connection)
 		{
 			Console.WriteLine("Выберите опцию: \n1 - Добавить нового автора\n2 - Добавить новую книгу\n3 - Добавить новую книгу и автора\n4 - Показать всех авторов в базе" +
-				"\n5 - Показать все книги в базе\n6 - Показать книги с авторами\n7 - Удалить автора из базы\n8 - Удалить книгу из базы");
+				"\n5 - Показать все книги в базе\n6 - Показать книги с авторами\n7 - Удалить автора из базы\n8 - Удалить книгу из базы\n9 - Закрыть меню");
 			int option = Convert.ToInt32(Console.ReadLine());
 			chooseOptionOfMainMenu(connection, option);
 		}
@@ -66,6 +66,16 @@ namespace IntroductionToADO
 			{
 				deleteBookQuery(connection);
 			}
+			else if (option == 9)
+			{
+				return;
+			}
+			else
+			{
+				Console.WriteLine("Неверный ввод");
+				
+			}
+			showMainMenu(connection);
 		}
 
 		static string[] addAuthor()
@@ -136,7 +146,7 @@ namespace IntroductionToADO
 			SqlDataReader rdr = selectCommand.ExecuteReader();
 			while (rdr.Read())
 			{
-				Console.WriteLine($"{rdr[0]}\t{rdr[1]}\t{rdr[2]}");
+				Console.WriteLine($"{rdr[0]} {rdr[1]}\t\t{rdr[2]}");
 			}
 			rdr.Close();
 		}
