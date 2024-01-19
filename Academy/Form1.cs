@@ -57,7 +57,7 @@ namespace Academy
 
 		private void cbGroups_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			string commandLine = $@"SELECT Students.stud_id, Students.last_name, Students.first_name, Students.middle_name
+			string commandLine = $@"SELECT stud_id, last_name, first_name, middle_name, birth_date, [group]
 			FROM Students WHERE Students.[group] = (SELECT group_id FROM Groups WHERE group_name = '{cbGroups.SelectedItem}')";
 			SqlCommand cmd = new SqlCommand(commandLine, connection);
 			connection.Open();
@@ -78,7 +78,7 @@ namespace Academy
 		private void btnAddStudent_Click(object sender, EventArgs e)
 		{
 			AddStudent ad = new AddStudent(connection);
-			ad.ShowDialog();
+			ad.ShowDialog(this);
 		}
 	}
 }

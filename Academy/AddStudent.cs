@@ -65,7 +65,7 @@ namespace Academy
 		{
 			int group_id = getGroupId(cbGroups.SelectedItem.ToString());
 			string insertCommand = $@"IF NOT EXISTS (SELECT * FROM Students WHERE last_name = '{rbLastName.Text}' 
-			AND first_name = '{rb_FirstName}' AND middle_name = '{rbMiddleName}' AND birth_date = '{dtpBirthDate.Text}' 
+			AND first_name = '{rb_FirstName}' AND middle_name = '{rbMiddleName}' AND birth_date = '{dtpBirthDate.Value.Date}' 
 			AND [group] = (SELECT group_id FROM Groups WHERE group_name = '{cbGroups.SelectedItem}')) 
 			BEGIN INSERT INTO Students (last_name, first_name, middle_name, birth_date, [group]) 
 			VALUES (@last_name, @first_name, @middle_name, @birth_date, @group) END";
@@ -78,6 +78,8 @@ namespace Academy
 			cmd.Parameters.AddWithValue("@group", group_id);
 			cmd.ExecuteNonQuery();
 			connection.Close();
+			this.Close();
+
 		}
 	}
 }
