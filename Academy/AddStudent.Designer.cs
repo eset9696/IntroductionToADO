@@ -63,7 +63,7 @@
 			// 
 			this.rbMiddleName.Location = new System.Drawing.Point(12, 98);
 			this.rbMiddleName.Name = "rbMiddleName";
-			this.rbMiddleName.Size = new System.Drawing.Size(264, 27);
+			this.rbMiddleName.Size = new System.Drawing.Size(264, 29);
 			this.rbMiddleName.TabIndex = 0;
 			this.rbMiddleName.Text = "";
 			// 
@@ -78,10 +78,14 @@
 			// 
 			// dtpBirthDate
 			// 
-			this.dtpBirthDate.Location = new System.Drawing.Point(286, 105);
+			this.dtpBirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.dtpBirthDate.Location = new System.Drawing.Point(286, 98);
+			this.dtpBirthDate.MaxDate = new System.DateTime(2014, 12, 31, 0, 0, 0, 0);
+			this.dtpBirthDate.MinDate = new System.DateTime(1904, 1, 1, 0, 0, 0, 0);
 			this.dtpBirthDate.Name = "dtpBirthDate";
-			this.dtpBirthDate.Size = new System.Drawing.Size(264, 20);
+			this.dtpBirthDate.Size = new System.Drawing.Size(264, 29);
 			this.dtpBirthDate.TabIndex = 2;
+			this.dtpBirthDate.Value = new System.DateTime(2014, 12, 31, 0, 0, 0, 0);
 			// 
 			// btnOk
 			// 
