@@ -25,10 +25,11 @@ namespace Academy
 			connectionString = ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
 			connection = new SqlConnection(connectionString);
 			LoadGroupsToComboBox(cbGroups);
-			LoadSpecialitiesToComboBox();
+			LoadSpecialitiesToComboBox(cbSpecialities);
+			LoadDirectionsToComboBox();
 		}
 
-		void LoadGroupsToComboBox(System.Windows.Forms.ComboBox comboBox)
+		private void LoadGroupsToComboBox(System.Windows.Forms.ComboBox comboBox)
 		{
 			try
 			{
@@ -53,7 +54,7 @@ namespace Academy
 			}
 		}
 
-		private void LoadSpecialitiesToComboBox()
+		private void LoadSpecialitiesToComboBox(System.Windows.Forms.ComboBox comboBox)
 		{
 			try
 			{
@@ -61,10 +62,10 @@ namespace Academy
 				SqlCommand cmd = new SqlCommand(commandLine, connection);
 				connection.Open();
 				reader = cmd.ExecuteReader();
-				cbSpecialities.Items.Add("ALL");
+				comboBox.Items.Add("ALL");
 				while (reader.Read())
 				{
-					cbSpecialities.Items.Add(reader[0]);
+					comboBox.Items.Add(reader[0]);
 				}
 			}
 			catch (Exception e)
@@ -95,6 +96,8 @@ namespace Academy
 					if(commandLine.Contains("work_since")) row["work_since"] = Convert.ToDateTime(reader["work_since"]).ToString("dd.MM.yyyy");
 					table.Rows.Add(row);
 				}
+				if(!commandLine.Contains("work_since")) labelStudentsCount.Text = table.Rows.Count.ToString();
+				else if(commandLine.Contains("work_since")) labelTeachersCount.Text = table.Rows.Count.ToString();
 			}
 			catch (Exception e)
 			{
@@ -105,6 +108,20 @@ namespace Academy
 				reader?.Close();
 				connection?.Close();
 			}
+		}
+
+		void LoadDirectionsToComboBox()
+		{
+			string commandLine = $@"SELECT direction_name FROM Directions";
+			SqlCommand cmd = new SqlCommand(commandLine, connection);
+			connection.Open();
+			reader = cmd.ExecuteReader();
+			while (reader.Read())
+			{
+				cbDirections.Items.Add(reader[0]);
+			}
+			reader.Close();
+			connection.Close();
 		}
 
 		private void btnAddStudent_Click(object sender, EventArgs e)
@@ -167,8 +184,57 @@ namespace Academy
 			}
 			finally
 			{
-				connection.Close();
+				connection?.Close();
 			}
+		}
+
+		private void btnDeleteTeacher_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				connection.Open();
+				for (int i = 0; i < dgvTeachers.SelectedRows.Count; i++)
+				{
+					string commandLine = $@"DELETE FROM Teachers WHERE stud_id = {dgvTeachers.SelectedRows[i].Cells[0].Value}";
+					SqlCommand cmd = new SqlCommand(commandLine, connection);
+					cmd.ExecuteNonQuery();
+				}
+			}
+			catch (Exception deleteException)
+			{
+				MessageBox.Show(this, deleteException.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+			finally
+			{
+				connection?.Close();
+			}
+		}
+
+		private void btnAddTeacher_Click(object sender, EventArgs e)
+		{
+			AddTeacher addTeacher = new AddTeacher(connection);
+			DialogResult result = addTeacher.ShowDialog(this);
+		}
+
+		private void rtbSearch_TextChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void cbDirections_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			string commandLine = $@"SELECT last_name, first_name, middle_name, birth_date, group_name, direction_name 
+			FROM Students, Groups, Directions
+			WHERE direction = direction_id AND [group] = group_id AND direction_name = '{cbDirections.SelectedItem}'";
+			LoadDataToTable(commandLine);
+			dgvStudents.DataSource = table;
+		}
+
+		private void dgvStudents_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+		{
+			StudentInfo studInfo = new StudentInfo(connection, Convert.ToInt32(dgvStudents.CurrentCell.Value.ToString()));
+			//studInfo.studId = Convert.ToInt32(dgvStudents.CurrentCell.Value.ToString());
+			DialogResult result = studInfo.ShowDialog(this);
 		}
 	}
 }

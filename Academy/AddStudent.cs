@@ -56,7 +56,12 @@ namespace Academy
 			{
 				connection?.Close();
 			}
-			this?.Close();
+			this.Close();
+		}
+
+		private void btnCLose_Click(object sender, EventArgs e)
+		{
+			this.Close();
 		}
 	}
 }

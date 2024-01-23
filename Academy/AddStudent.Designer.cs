@@ -110,6 +110,7 @@
 			this.btnCLose.TabIndex = 4;
 			this.btnCLose.Text = "Close";
 			this.btnCLose.UseVisualStyleBackColor = true;
+			this.btnCLose.Click += new System.EventHandler(this.btnCLose_Click);
 			// 
 			// labelLastName
 			// 
