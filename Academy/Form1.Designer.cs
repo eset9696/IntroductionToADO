@@ -28,23 +28,24 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.dgvStudents = new System.Windows.Forms.DataGridView();
 			this.cbGroups = new System.Windows.Forms.ComboBox();
 			this.btnAddStudent = new System.Windows.Forms.Button();
-			this.tabControl1 = new System.Windows.Forms.TabControl();
-			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.tbAcademy = new System.Windows.Forms.TabControl();
+			this.tabPageStudents = new System.Windows.Forms.TabPage();
 			this.label2 = new System.Windows.Forms.Label();
 			this.labelStudentsCount = new System.Windows.Forms.Label();
 			this.cbDirections = new System.Windows.Forms.ComboBox();
 			this.labelDirection = new System.Windows.Forms.Label();
-			this.rtbSearch = new System.Windows.Forms.RichTextBox();
+			this.rtbStudSearch = new System.Windows.Forms.RichTextBox();
 			this.btnDeleteStudent = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.tabPageTeachers = new System.Windows.Forms.TabPage();
+			this.rtbTeacherSearch = new System.Windows.Forms.RichTextBox();
 			this.labelTeachersCount = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.btnDeleteTeacher = new System.Windows.Forms.Button();
@@ -52,53 +53,56 @@
 			this.dgvTeachers = new System.Windows.Forms.DataGridView();
 			this.cbSpecialities = new System.Windows.Forms.ComboBox();
 			this.labelSpeciality = new System.Windows.Forms.Label();
-			this.tabPage3 = new System.Windows.Forms.TabPage();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.button1 = new System.Windows.Forms.Button();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.tabPageGroups = new System.Windows.Forms.TabPage();
+			this.cbGroupsDirections = new System.Windows.Forms.ComboBox();
+			this.btnAddGroup = new System.Windows.Forms.Button();
+			this.dgvGroups = new System.Windows.Forms.DataGridView();
+			this.labelGroupsCount = new System.Windows.Forms.Label();
+			this.labelNumOfGroups = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
-			this.tabControl1.SuspendLayout();
-			this.tabPage1.SuspendLayout();
-			this.tabPage2.SuspendLayout();
+			this.tbAcademy.SuspendLayout();
+			this.tabPageStudents.SuspendLayout();
+			this.tabPageTeachers.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvTeachers)).BeginInit();
-			this.tabPage3.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			this.tabPageGroups.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvGroups)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// dgvStudents
 			// 
-			dataGridViewCellStyle13.NullValue = null;
-			this.dgvStudents.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+			dataGridViewCellStyle5.NullValue = null;
+			this.dgvStudents.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
 			this.dgvStudents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.dgvStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.dgvStudents.BackgroundColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle14.NullValue = null;
-			dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgvStudents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+			this.dgvStudents.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle6.NullValue = null;
+			dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvStudents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
 			this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle15.NullValue = null;
-			dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dgvStudents.DefaultCellStyle = dataGridViewCellStyle15;
+			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle7.NullValue = null;
+			dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dgvStudents.DefaultCellStyle = dataGridViewCellStyle7;
 			this.dgvStudents.Location = new System.Drawing.Point(6, 44);
 			this.dgvStudents.Name = "dgvStudents";
 			this.dgvStudents.ReadOnly = true;
-			dataGridViewCellStyle16.Format = "d";
-			dataGridViewCellStyle16.NullValue = null;
-			this.dgvStudents.RowsDefaultCellStyle = dataGridViewCellStyle16;
+			dataGridViewCellStyle8.Format = "d";
+			dataGridViewCellStyle8.NullValue = null;
+			this.dgvStudents.RowsDefaultCellStyle = dataGridViewCellStyle8;
 			this.dgvStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dgvStudents.Size = new System.Drawing.Size(756, 321);
 			this.dgvStudents.TabIndex = 1;
@@ -124,39 +128,39 @@
 			this.btnAddStudent.UseVisualStyleBackColor = true;
 			this.btnAddStudent.Click += new System.EventHandler(this.btnAddStudent_Click);
 			// 
-			// tabControl1
+			// tbAcademy
 			// 
-			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.tbAcademy.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tabControl1.Controls.Add(this.tabPage1);
-			this.tabControl1.Controls.Add(this.tabPage2);
-			this.tabControl1.Controls.Add(this.tabPage3);
-			this.tabControl1.Location = new System.Drawing.Point(12, 12);
-			this.tabControl1.Name = "tabControl1";
-			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(776, 426);
-			this.tabControl1.TabIndex = 4;
+			this.tbAcademy.Controls.Add(this.tabPageStudents);
+			this.tbAcademy.Controls.Add(this.tabPageTeachers);
+			this.tbAcademy.Controls.Add(this.tabPageGroups);
+			this.tbAcademy.Location = new System.Drawing.Point(12, 12);
+			this.tbAcademy.Name = "tbAcademy";
+			this.tbAcademy.SelectedIndex = 0;
+			this.tbAcademy.Size = new System.Drawing.Size(776, 426);
+			this.tbAcademy.TabIndex = 4;
 			// 
-			// tabPage1
+			// tabPageStudents
 			// 
-			this.tabPage1.Controls.Add(this.label2);
-			this.tabPage1.Controls.Add(this.labelStudentsCount);
-			this.tabPage1.Controls.Add(this.cbDirections);
-			this.tabPage1.Controls.Add(this.labelDirection);
-			this.tabPage1.Controls.Add(this.rtbSearch);
-			this.tabPage1.Controls.Add(this.btnDeleteStudent);
-			this.tabPage1.Controls.Add(this.label1);
-			this.tabPage1.Controls.Add(this.cbGroups);
-			this.tabPage1.Controls.Add(this.dgvStudents);
-			this.tabPage1.Controls.Add(this.btnAddStudent);
-			this.tabPage1.Location = new System.Drawing.Point(4, 22);
-			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(768, 400);
-			this.tabPage1.TabIndex = 0;
-			this.tabPage1.Text = "Students";
-			this.tabPage1.UseVisualStyleBackColor = true;
+			this.tabPageStudents.Controls.Add(this.label2);
+			this.tabPageStudents.Controls.Add(this.labelStudentsCount);
+			this.tabPageStudents.Controls.Add(this.cbDirections);
+			this.tabPageStudents.Controls.Add(this.labelDirection);
+			this.tabPageStudents.Controls.Add(this.rtbStudSearch);
+			this.tabPageStudents.Controls.Add(this.btnDeleteStudent);
+			this.tabPageStudents.Controls.Add(this.label1);
+			this.tabPageStudents.Controls.Add(this.cbGroups);
+			this.tabPageStudents.Controls.Add(this.dgvStudents);
+			this.tabPageStudents.Controls.Add(this.btnAddStudent);
+			this.tabPageStudents.Location = new System.Drawing.Point(4, 22);
+			this.tabPageStudents.Name = "tabPageStudents";
+			this.tabPageStudents.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPageStudents.Size = new System.Drawing.Size(768, 400);
+			this.tabPageStudents.TabIndex = 0;
+			this.tabPageStudents.Text = "Students";
+			this.tabPageStudents.UseVisualStyleBackColor = true;
 			// 
 			// label2
 			// 
@@ -198,16 +202,16 @@
 			this.labelDirection.TabIndex = 7;
 			this.labelDirection.Text = "Direction:";
 			// 
-			// rtbSearch
+			// rtbStudSearch
 			// 
-			this.rtbSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.rtbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.rtbSearch.Location = new System.Drawing.Point(557, 6);
-			this.rtbSearch.Name = "rtbSearch";
-			this.rtbSearch.Size = new System.Drawing.Size(205, 32);
-			this.rtbSearch.TabIndex = 6;
-			this.rtbSearch.Text = "";
-			this.rtbSearch.TextChanged += new System.EventHandler(this.rtbSearch_TextChanged);
+			this.rtbStudSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.rtbStudSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.rtbStudSearch.Location = new System.Drawing.Point(557, 6);
+			this.rtbStudSearch.Name = "rtbStudSearch";
+			this.rtbStudSearch.Size = new System.Drawing.Size(205, 32);
+			this.rtbStudSearch.TabIndex = 6;
+			this.rtbStudSearch.Text = "";
+			this.rtbStudSearch.TextChanged += new System.EventHandler(this.rtbSearch_TextChanged);
 			// 
 			// btnDeleteStudent
 			// 
@@ -231,22 +235,33 @@
 			this.label1.TabIndex = 4;
 			this.label1.Text = "Group:";
 			// 
-			// tabPage2
+			// tabPageTeachers
 			// 
-			this.tabPage2.Controls.Add(this.labelTeachersCount);
-			this.tabPage2.Controls.Add(this.label3);
-			this.tabPage2.Controls.Add(this.btnDeleteTeacher);
-			this.tabPage2.Controls.Add(this.btnAddTeacher);
-			this.tabPage2.Controls.Add(this.dgvTeachers);
-			this.tabPage2.Controls.Add(this.cbSpecialities);
-			this.tabPage2.Controls.Add(this.labelSpeciality);
-			this.tabPage2.Location = new System.Drawing.Point(4, 22);
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(768, 400);
-			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "Teachers";
-			this.tabPage2.UseVisualStyleBackColor = true;
+			this.tabPageTeachers.Controls.Add(this.rtbTeacherSearch);
+			this.tabPageTeachers.Controls.Add(this.labelTeachersCount);
+			this.tabPageTeachers.Controls.Add(this.label3);
+			this.tabPageTeachers.Controls.Add(this.btnDeleteTeacher);
+			this.tabPageTeachers.Controls.Add(this.btnAddTeacher);
+			this.tabPageTeachers.Controls.Add(this.dgvTeachers);
+			this.tabPageTeachers.Controls.Add(this.cbSpecialities);
+			this.tabPageTeachers.Controls.Add(this.labelSpeciality);
+			this.tabPageTeachers.Location = new System.Drawing.Point(4, 22);
+			this.tabPageTeachers.Name = "tabPageTeachers";
+			this.tabPageTeachers.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPageTeachers.Size = new System.Drawing.Size(768, 400);
+			this.tabPageTeachers.TabIndex = 1;
+			this.tabPageTeachers.Text = "Teachers";
+			this.tabPageTeachers.UseVisualStyleBackColor = true;
+			// 
+			// rtbTeacherSearch
+			// 
+			this.rtbTeacherSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.rtbTeacherSearch.Location = new System.Drawing.Point(606, 7);
+			this.rtbTeacherSearch.Name = "rtbTeacherSearch";
+			this.rtbTeacherSearch.Size = new System.Drawing.Size(149, 20);
+			this.rtbTeacherSearch.TabIndex = 6;
+			this.rtbTeacherSearch.Text = "";
+			this.rtbTeacherSearch.TextChanged += new System.EventHandler(this.rtbTeacherSearch_TextChanged);
 			// 
 			// labelTeachersCount
 			// 
@@ -297,6 +312,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.dgvTeachers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.dgvTeachers.BackgroundColor = System.Drawing.SystemColors.Control;
+			this.dgvTeachers.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.dgvTeachers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvTeachers.Location = new System.Drawing.Point(10, 33);
 			this.dgvTeachers.Name = "dgvTeachers";
@@ -324,61 +340,92 @@
 			this.labelSpeciality.TabIndex = 0;
 			this.labelSpeciality.Text = "Speciality";
 			// 
-			// tabPage3
+			// tabPageGroups
 			// 
-			this.tabPage3.Controls.Add(this.comboBox1);
-			this.tabPage3.Controls.Add(this.button1);
-			this.tabPage3.Controls.Add(this.dataGridView1);
-			this.tabPage3.Location = new System.Drawing.Point(4, 22);
-			this.tabPage3.Name = "tabPage3";
-			this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage3.Size = new System.Drawing.Size(768, 400);
-			this.tabPage3.TabIndex = 2;
-			this.tabPage3.Text = "Groups";
-			this.tabPage3.UseVisualStyleBackColor = true;
+			this.tabPageGroups.Controls.Add(this.labelNumOfGroups);
+			this.tabPageGroups.Controls.Add(this.labelGroupsCount);
+			this.tabPageGroups.Controls.Add(this.cbGroupsDirections);
+			this.tabPageGroups.Controls.Add(this.btnAddGroup);
+			this.tabPageGroups.Controls.Add(this.dgvGroups);
+			this.tabPageGroups.Location = new System.Drawing.Point(4, 22);
+			this.tabPageGroups.Name = "tabPageGroups";
+			this.tabPageGroups.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPageGroups.Size = new System.Drawing.Size(768, 400);
+			this.tabPageGroups.TabIndex = 2;
+			this.tabPageGroups.Text = "Groups";
+			this.tabPageGroups.UseVisualStyleBackColor = true;
 			// 
-			// dataGridView1
+			// cbGroupsDirections
 			// 
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Location = new System.Drawing.Point(6, 90);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.Size = new System.Drawing.Size(756, 257);
-			this.dataGridView1.TabIndex = 0;
+			this.cbGroupsDirections.FormattingEnabled = true;
+			this.cbGroupsDirections.Location = new System.Drawing.Point(7, 7);
+			this.cbGroupsDirections.Name = "cbGroupsDirections";
+			this.cbGroupsDirections.Size = new System.Drawing.Size(335, 21);
+			this.cbGroupsDirections.TabIndex = 2;
+			this.cbGroupsDirections.SelectedIndexChanged += new System.EventHandler(this.cbGroupsDirections_SelectedIndexChanged);
 			// 
-			// button1
+			// btnAddGroup
 			// 
-			this.button1.Location = new System.Drawing.Point(687, 371);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 1;
-			this.button1.Text = "button1";
-			this.button1.UseVisualStyleBackColor = true;
+			this.btnAddGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnAddGroup.Location = new System.Drawing.Point(687, 371);
+			this.btnAddGroup.Name = "btnAddGroup";
+			this.btnAddGroup.Size = new System.Drawing.Size(75, 23);
+			this.btnAddGroup.TabIndex = 1;
+			this.btnAddGroup.Text = "Add";
+			this.btnAddGroup.UseVisualStyleBackColor = true;
 			// 
-			// comboBox1
+			// dgvGroups
 			// 
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Location = new System.Drawing.Point(7, 7);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(121, 21);
-			this.comboBox1.TabIndex = 2;
+			this.dgvGroups.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.dgvGroups.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.dgvGroups.BackgroundColor = System.Drawing.SystemColors.Control;
+			this.dgvGroups.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.dgvGroups.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvGroups.Location = new System.Drawing.Point(6, 34);
+			this.dgvGroups.Name = "dgvGroups";
+			this.dgvGroups.Size = new System.Drawing.Size(756, 331);
+			this.dgvGroups.TabIndex = 0;
+			// 
+			// labelGroupsCount
+			// 
+			this.labelGroupsCount.AutoSize = true;
+			this.labelGroupsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.labelGroupsCount.Location = new System.Drawing.Point(69, 374);
+			this.labelGroupsCount.Name = "labelGroupsCount";
+			this.labelGroupsCount.Size = new System.Drawing.Size(14, 16);
+			this.labelGroupsCount.TabIndex = 3;
+			this.labelGroupsCount.Text = "0";
+			// 
+			// labelNumOfGroups
+			// 
+			this.labelNumOfGroups.AutoSize = true;
+			this.labelNumOfGroups.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.labelNumOfGroups.Location = new System.Drawing.Point(6, 374);
+			this.labelNumOfGroups.Name = "labelNumOfGroups";
+			this.labelNumOfGroups.Size = new System.Drawing.Size(57, 16);
+			this.labelNumOfGroups.TabIndex = 3;
+			this.labelNumOfGroups.Text = "Groups: ";
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(this.tabControl1);
+			this.Controls.Add(this.tbAcademy);
 			this.Name = "Form1";
-			this.Text = "Students";
+			this.Text = "Main data";
 			((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).EndInit();
-			this.tabControl1.ResumeLayout(false);
-			this.tabPage1.ResumeLayout(false);
-			this.tabPage1.PerformLayout();
-			this.tabPage2.ResumeLayout(false);
-			this.tabPage2.PerformLayout();
+			this.tbAcademy.ResumeLayout(false);
+			this.tabPageStudents.ResumeLayout(false);
+			this.tabPageStudents.PerformLayout();
+			this.tabPageTeachers.ResumeLayout(false);
+			this.tabPageTeachers.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvTeachers)).EndInit();
-			this.tabPage3.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			this.tabPageGroups.ResumeLayout(false);
+			this.tabPageGroups.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvGroups)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -387,9 +434,9 @@
 		private System.Windows.Forms.DataGridView dgvStudents;
 		private System.Windows.Forms.ComboBox cbGroups;
 		private System.Windows.Forms.Button btnAddStudent;
-		private System.Windows.Forms.TabControl tabControl1;
-		private System.Windows.Forms.TabPage tabPage1;
-		private System.Windows.Forms.TabPage tabPage2;
+		private System.Windows.Forms.TabControl tbAcademy;
+		private System.Windows.Forms.TabPage tabPageStudents;
+		private System.Windows.Forms.TabPage tabPageTeachers;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button btnAddTeacher;
 		private System.Windows.Forms.DataGridView dgvTeachers;
@@ -397,17 +444,20 @@
 		private System.Windows.Forms.Label labelSpeciality;
 		private System.Windows.Forms.Button btnDeleteStudent;
 		private System.Windows.Forms.Button btnDeleteTeacher;
-		private System.Windows.Forms.RichTextBox rtbSearch;
+		private System.Windows.Forms.RichTextBox rtbStudSearch;
 		private System.Windows.Forms.Label labelDirection;
 		private System.Windows.Forms.ComboBox cbDirections;
 		private System.Windows.Forms.Label labelStudentsCount;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label labelTeachersCount;
 		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.TabPage tabPage3;
-		private System.Windows.Forms.ComboBox comboBox1;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.DataGridView dataGridView1;
+		private System.Windows.Forms.TabPage tabPageGroups;
+		private System.Windows.Forms.ComboBox cbGroupsDirections;
+		private System.Windows.Forms.Button btnAddGroup;
+		private System.Windows.Forms.DataGridView dgvGroups;
+		private System.Windows.Forms.RichTextBox rtbTeacherSearch;
+		private System.Windows.Forms.Label labelGroupsCount;
+		private System.Windows.Forms.Label labelNumOfGroups;
 	}
 }
 

@@ -83,6 +83,7 @@ namespace Academy
 		{
 			OpenFileDialog openFileDialog = new OpenFileDialog();
 			openFileDialog.ShowDialog(this);
+			if (openFileDialog.FileName.Length == 0) return;
 			byte[] image = File.ReadAllBytes(openFileDialog.FileName);
 			string image_name = openFileDialog.SafeFileName;
 			SqlCommand cmd = new SqlCommand();
@@ -93,18 +94,17 @@ namespace Academy
 			cmd.Parameters.AddWithValue("@image_name", image_name);
 			cmd.Parameters["@image"].Value = image;
 			int image_id = (int)cmd.ExecuteScalar();
-			connection.Close();
 			SetAvatarForStudent(image_id);
+			connection.Close();
+			LoadAvatar();
 		}
 
 		private void SetAvatarForStudent(int image_id)
 		{
 			SqlCommand cmd = new SqlCommand();
-			connection.Open();
 			cmd.Connection = connection;
 			cmd.CommandText = $@"UPDATE Students SET Students.image = {image_id} WHERE Students.stud_id = {studId}";
 			cmd.ExecuteNonQuery();
-			connection.Close();
 		}
 	}
 }

@@ -26,7 +26,8 @@ namespace Academy
 			connection = new SqlConnection(connectionString);
 			LoadGroupsToComboBox(cbGroups);
 			LoadSpecialitiesToComboBox(cbSpecialities);
-			LoadDirectionsToComboBox();
+			LoadDirectionsToComboBox(cbGroupsDirections);
+			LoadDirectionsToComboBox(cbDirections);
 		}
 
 		private void LoadGroupsToComboBox(System.Windows.Forms.ComboBox comboBox)
@@ -79,6 +80,31 @@ namespace Academy
 			}
 		}
 
+		private void LoadDirectionsToComboBox(System.Windows.Forms.ComboBox comboBox)
+		{
+			try
+			{
+				string commandLine = $@"SELECT direction_name FROM Directions";
+				SqlCommand cmd = new SqlCommand(commandLine, connection);
+				connection.Open();
+				reader = cmd.ExecuteReader();
+				comboBox.Items.Add("ALL");
+				while (reader.Read())
+				{
+					comboBox.Items.Add(reader[0]);
+				}
+			}
+			catch (Exception e)
+			{
+				MessageBox.Show(this, e.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+			finally
+			{
+				reader?.Close();
+				connection?.Close();
+			}
+		}
+
 		private void LoadDataToTable(string commandLine)
 		{
 			try
@@ -92,12 +118,13 @@ namespace Academy
 				{
 					DataRow row = table.NewRow();
 					for (int i = 0; i < reader.FieldCount; i++) row[i] = reader[i];
-					row["birth_date"] = Convert.ToDateTime(reader["birth_date"]).ToString("dd.MM.yyyy");
+					if (commandLine.Contains("birth_date")) row["birth_date"] = Convert.ToDateTime(reader["birth_date"]).ToString("dd.MM.yyyy");
 					if(commandLine.Contains("work_since")) row["work_since"] = Convert.ToDateTime(reader["work_since"]).ToString("dd.MM.yyyy");
 					table.Rows.Add(row);
 				}
-				if(!commandLine.Contains("work_since")) labelStudentsCount.Text = table.Rows.Count.ToString();
-				else if(commandLine.Contains("work_since")) labelTeachersCount.Text = table.Rows.Count.ToString();
+				if(tbAcademy.SelectedTab == tabPageStudents) labelStudentsCount.Text = table.Rows.Count.ToString();
+				if(tbAcademy.SelectedTab == tabPageTeachers) labelTeachersCount.Text = table.Rows.Count.ToString();
+				if (tbAcademy.SelectedTab == tabPageGroups) labelGroupsCount.Text = table.Rows.Count.ToString();
 			}
 			catch (Exception e)
 			{
@@ -108,20 +135,6 @@ namespace Academy
 				reader?.Close();
 				connection?.Close();
 			}
-		}
-
-		void LoadDirectionsToComboBox()
-		{
-			string commandLine = $@"SELECT direction_name FROM Directions";
-			SqlCommand cmd = new SqlCommand(commandLine, connection);
-			connection.Open();
-			reader = cmd.ExecuteReader();
-			while (reader.Read())
-			{
-				cbDirections.Items.Add(reader[0]);
-			}
-			reader.Close();
-			connection.Close();
 		}
 
 		private void btnAddStudent_Click(object sender, EventArgs e)
@@ -219,12 +232,10 @@ namespace Academy
 		private void rtbSearch_TextChanged(object sender, EventArgs e)
 		{
 			string commandLine = $@"SELECT Students.last_name, Students.first_name, Students.middle_name, Students.birth_date, Groups.group_name 
-			FROM Students, Groups WHERE Students.[group] = Groups.group_id AND (Students.last_name LIKE '{rtbSearch.Text}%' 
-			OR Students.first_name LIKE '{rtbSearch.Text}%' OR Students.middle_name LIKE '{rtbSearch.Text}%')";
+			FROM Students, Groups WHERE Students.[group] = Groups.group_id AND (Students.last_name LIKE '{rtbStudSearch.Text}%' 
+			OR Students.first_name LIKE '{rtbStudSearch.Text}%' OR Students.middle_name LIKE '{rtbStudSearch.Text}%')";
 			LoadDataToTable(commandLine);
 			dgvStudents.DataSource = table;
-			/*SqlCommand cmd = new SqlCommand(commandLine, connection);
-			connection.Open();*/
 		}
 
 		private void cbDirections_SelectedIndexChanged(object sender, EventArgs e)
@@ -235,12 +246,39 @@ namespace Academy
 			LoadDataToTable(commandLine);
 			dgvStudents.DataSource = table;
 		}
-
+		
 		private void dgvStudents_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
 		{
 			StudentInfo studInfo = new StudentInfo(connection, Convert.ToInt32(dgvStudents.CurrentCell.Value.ToString()));
-			//studInfo.studId = Convert.ToInt32(dgvStudents.CurrentCell.Value.ToString());
 			DialogResult result = studInfo.ShowDialog(this);
+		}
+
+		private void rtbTeacherSearch_TextChanged(object sender, EventArgs e)
+		{
+			string commandLine = $@"SELECT Teachers.last_name, Teachers.first_name, Teachers.middle_name, Teachers.birth_date, 
+			Teachers.work_since, Teachers.rate
+			FROM Teachers 
+			WHERE (Teachers.last_name LIKE '{rtbTeacherSearch.Text}%' 
+			OR Teachers.first_name LIKE '{rtbTeacherSearch.Text}%' OR Teachers.middle_name LIKE '{rtbTeacherSearch.Text}%')";
+			LoadDataToTable(commandLine);
+			dgvTeachers.DataSource = table;
+		}
+
+		private void cbGroupsDirections_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (cbGroupsDirections.SelectedItem.ToString() == "ALL")
+			{
+				string commandLine = $@"SELECT Groups.group_name, Directions.direction_name FROM Groups, Directions
+				WHERE Directions.direction_id = Groups.direction";
+				LoadDataToTable(commandLine); 
+			}
+			else
+			{
+				string commandLine = $@"SELECT Groups.group_name, Directions.direction_name FROM Groups, Directions
+				WHERE Directions.direction_id = Groups.direction AND Directions.direction_name = '{cbGroupsDirections.Text}'";
+				LoadDataToTable(commandLine);
+			}
+			dgvGroups.DataSource = table;
 		}
 	}
 }
