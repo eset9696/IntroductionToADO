@@ -218,7 +218,13 @@ namespace Academy
 
 		private void rtbSearch_TextChanged(object sender, EventArgs e)
 		{
-
+			string commandLine = $@"SELECT Students.last_name, Students.first_name, Students.middle_name, Students.birth_date, Groups.group_name 
+			FROM Students, Groups WHERE Students.[group] = Groups.group_id AND (Students.last_name LIKE '{rtbSearch.Text}%' 
+			OR Students.first_name LIKE '{rtbSearch.Text}%' OR Students.middle_name LIKE '{rtbSearch.Text}%')";
+			LoadDataToTable(commandLine);
+			dgvStudents.DataSource = table;
+			/*SqlCommand cmd = new SqlCommand(commandLine, connection);
+			connection.Open();*/
 		}
 
 		private void cbDirections_SelectedIndexChanged(object sender, EventArgs e)

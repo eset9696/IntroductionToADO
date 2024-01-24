@@ -111,6 +111,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
 			this.ClientSize = new System.Drawing.Size(550, 173);
 			this.Controls.Add(this.btnSetStudentAvatar);
 			this.Controls.Add(this.labelAVGGrade);
@@ -119,8 +120,10 @@
 			this.Controls.Add(this.labelBirthDate);
 			this.Controls.Add(this.pbAvatarStudent);
 			this.Controls.Add(this.labelStudName);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Name = "StudentInfo";
 			this.Text = "Student info";
+			this.TransparencyKey = System.Drawing.Color.Gray;
 			((System.ComponentModel.ISupportInitialize)(this.pbAvatarStudent)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
