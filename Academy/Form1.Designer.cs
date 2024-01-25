@@ -28,10 +28,10 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.dgvStudents = new System.Windows.Forms.DataGridView();
 			this.cbGroups = new System.Windows.Forms.ComboBox();
 			this.btnAddStudent = new System.Windows.Forms.Button();
@@ -54,11 +54,11 @@
 			this.cbSpecialities = new System.Windows.Forms.ComboBox();
 			this.labelSpeciality = new System.Windows.Forms.Label();
 			this.tabPageGroups = new System.Windows.Forms.TabPage();
+			this.labelNumOfGroups = new System.Windows.Forms.Label();
+			this.labelGroupsCount = new System.Windows.Forms.Label();
 			this.cbGroupsDirections = new System.Windows.Forms.ComboBox();
 			this.btnAddGroup = new System.Windows.Forms.Button();
 			this.dgvGroups = new System.Windows.Forms.DataGridView();
-			this.labelGroupsCount = new System.Windows.Forms.Label();
-			this.labelNumOfGroups = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
 			this.tbAcademy.SuspendLayout();
 			this.tabPageStudents.SuspendLayout();
@@ -70,39 +70,39 @@
 			// 
 			// dgvStudents
 			// 
-			dataGridViewCellStyle5.NullValue = null;
-			this.dgvStudents.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle1.NullValue = null;
+			this.dgvStudents.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this.dgvStudents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.dgvStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.dgvStudents.BackgroundColor = System.Drawing.SystemColors.Control;
 			this.dgvStudents.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle6.NullValue = null;
-			dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dgvStudents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.NullValue = null;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dgvStudents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle7.NullValue = null;
-			dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dgvStudents.DefaultCellStyle = dataGridViewCellStyle7;
+			dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle3.NullValue = null;
+			dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dgvStudents.DefaultCellStyle = dataGridViewCellStyle3;
 			this.dgvStudents.Location = new System.Drawing.Point(6, 44);
 			this.dgvStudents.Name = "dgvStudents";
 			this.dgvStudents.ReadOnly = true;
-			dataGridViewCellStyle8.Format = "d";
-			dataGridViewCellStyle8.NullValue = null;
-			this.dgvStudents.RowsDefaultCellStyle = dataGridViewCellStyle8;
+			dataGridViewCellStyle4.Format = "d";
+			dataGridViewCellStyle4.NullValue = null;
+			this.dgvStudents.RowsDefaultCellStyle = dataGridViewCellStyle4;
 			this.dgvStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dgvStudents.Size = new System.Drawing.Size(756, 321);
 			this.dgvStudents.TabIndex = 1;
@@ -164,6 +164,7 @@
 			// 
 			// label2
 			// 
+			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.label2.AutoSize = true;
 			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.label2.Location = new System.Drawing.Point(6, 374);
@@ -174,6 +175,7 @@
 			// 
 			// labelStudentsCount
 			// 
+			this.labelStudentsCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.labelStudentsCount.AutoSize = true;
 			this.labelStudentsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.labelStudentsCount.Location = new System.Drawing.Point(74, 374);
@@ -205,10 +207,10 @@
 			// rtbStudSearch
 			// 
 			this.rtbStudSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.rtbStudSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.rtbStudSearch.Location = new System.Drawing.Point(557, 6);
+			this.rtbStudSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.rtbStudSearch.Location = new System.Drawing.Point(524, 4);
 			this.rtbStudSearch.Name = "rtbStudSearch";
-			this.rtbStudSearch.Size = new System.Drawing.Size(205, 32);
+			this.rtbStudSearch.Size = new System.Drawing.Size(238, 24);
 			this.rtbStudSearch.TabIndex = 6;
 			this.rtbStudSearch.Text = "";
 			this.rtbStudSearch.TextChanged += new System.EventHandler(this.rtbSearch_TextChanged);
@@ -255,16 +257,17 @@
 			// 
 			// rtbTeacherSearch
 			// 
-			this.rtbTeacherSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.rtbTeacherSearch.Location = new System.Drawing.Point(606, 7);
+			this.rtbTeacherSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.rtbTeacherSearch.Location = new System.Drawing.Point(550, 6);
 			this.rtbTeacherSearch.Name = "rtbTeacherSearch";
-			this.rtbTeacherSearch.Size = new System.Drawing.Size(149, 20);
+			this.rtbTeacherSearch.Size = new System.Drawing.Size(205, 21);
 			this.rtbTeacherSearch.TabIndex = 6;
 			this.rtbTeacherSearch.Text = "";
 			this.rtbTeacherSearch.TextChanged += new System.EventHandler(this.rtbTeacherSearch_TextChanged);
 			// 
 			// labelTeachersCount
 			// 
+			this.labelTeachersCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.labelTeachersCount.AutoSize = true;
 			this.labelTeachersCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.labelTeachersCount.Location = new System.Drawing.Point(84, 372);
@@ -275,6 +278,7 @@
 			// 
 			// label3
 			// 
+			this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.label3.AutoSize = true;
 			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.label3.Location = new System.Drawing.Point(10, 372);
@@ -355,6 +359,28 @@
 			this.tabPageGroups.Text = "Groups";
 			this.tabPageGroups.UseVisualStyleBackColor = true;
 			// 
+			// labelNumOfGroups
+			// 
+			this.labelNumOfGroups.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.labelNumOfGroups.AutoSize = true;
+			this.labelNumOfGroups.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.labelNumOfGroups.Location = new System.Drawing.Point(6, 374);
+			this.labelNumOfGroups.Name = "labelNumOfGroups";
+			this.labelNumOfGroups.Size = new System.Drawing.Size(57, 16);
+			this.labelNumOfGroups.TabIndex = 3;
+			this.labelNumOfGroups.Text = "Groups: ";
+			// 
+			// labelGroupsCount
+			// 
+			this.labelGroupsCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.labelGroupsCount.AutoSize = true;
+			this.labelGroupsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.labelGroupsCount.Location = new System.Drawing.Point(69, 374);
+			this.labelGroupsCount.Name = "labelGroupsCount";
+			this.labelGroupsCount.Size = new System.Drawing.Size(14, 16);
+			this.labelGroupsCount.TabIndex = 3;
+			this.labelGroupsCount.Text = "0";
+			// 
 			// cbGroupsDirections
 			// 
 			this.cbGroupsDirections.FormattingEnabled = true;
@@ -373,6 +399,7 @@
 			this.btnAddGroup.TabIndex = 1;
 			this.btnAddGroup.Text = "Add";
 			this.btnAddGroup.UseVisualStyleBackColor = true;
+			this.btnAddGroup.Click += new System.EventHandler(this.btnAddGroup_Click);
 			// 
 			// dgvGroups
 			// 
@@ -387,26 +414,6 @@
 			this.dgvGroups.Name = "dgvGroups";
 			this.dgvGroups.Size = new System.Drawing.Size(756, 331);
 			this.dgvGroups.TabIndex = 0;
-			// 
-			// labelGroupsCount
-			// 
-			this.labelGroupsCount.AutoSize = true;
-			this.labelGroupsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.labelGroupsCount.Location = new System.Drawing.Point(69, 374);
-			this.labelGroupsCount.Name = "labelGroupsCount";
-			this.labelGroupsCount.Size = new System.Drawing.Size(14, 16);
-			this.labelGroupsCount.TabIndex = 3;
-			this.labelGroupsCount.Text = "0";
-			// 
-			// labelNumOfGroups
-			// 
-			this.labelNumOfGroups.AutoSize = true;
-			this.labelNumOfGroups.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.labelNumOfGroups.Location = new System.Drawing.Point(6, 374);
-			this.labelNumOfGroups.Name = "labelNumOfGroups";
-			this.labelNumOfGroups.Size = new System.Drawing.Size(57, 16);
-			this.labelNumOfGroups.TabIndex = 3;
-			this.labelNumOfGroups.Text = "Groups: ";
 			// 
 			// Form1
 			// 

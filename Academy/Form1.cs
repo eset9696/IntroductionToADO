@@ -105,7 +105,7 @@ namespace Academy
 			}
 		}
 
-		private void LoadDataToTable(string commandLine)
+		private void LoadDataToTable(System.Windows.Forms.DataGridView dataGridView, string commandLine)
 		{
 			try
 			{
@@ -122,6 +122,7 @@ namespace Academy
 					if(commandLine.Contains("work_since")) row["work_since"] = Convert.ToDateTime(reader["work_since"]).ToString("dd.MM.yyyy");
 					table.Rows.Add(row);
 				}
+				dataGridView.DataSource = table;
 				if(tbAcademy.SelectedTab == tabPageStudents) labelStudentsCount.Text = table.Rows.Count.ToString();
 				if(tbAcademy.SelectedTab == tabPageTeachers) labelTeachersCount.Text = table.Rows.Count.ToString();
 				if (tbAcademy.SelectedTab == tabPageGroups) labelGroupsCount.Text = table.Rows.Count.ToString();
@@ -147,36 +148,22 @@ namespace Academy
 
 		private void cbGroups_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (cbGroups.SelectedItem.ToString() == "ALL")
-			{
-				string commandLine = $@"SELECT stud_id, last_name, first_name, middle_name, birth_date, group_name
-				FROM Students, Groups WHERE group_id = [group] ORDER BY last_name";
-				LoadDataToTable(commandLine);
-			}
-			else
-			{
-				string commandLine = $@"SELECT stud_id, last_name, first_name, middle_name, birth_date, group_name
-				FROM Students, Groups WHERE group_id = [group] AND group_name = '{cbGroups.SelectedItem}'";
-				LoadDataToTable(commandLine);
-			}
-			dgvStudents.DataSource = table;
+			string subLine = " ";
+			if (cbGroups.SelectedItem.ToString() != "ALL")
+				subLine = $@"AND group_name = '{cbGroups.SelectedItem}'";
+			string commandLine = $@"SELECT stud_id, last_name, first_name, middle_name, birth_date, group_name
+				FROM Students, Groups WHERE group_id = [group] {subLine} ORDER BY last_name";
+			
+			LoadDataToTable(dgvStudents, commandLine);
 		}
 
 		private void cbSpecialities_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (cbSpecialities.SelectedItem.ToString() == "ALL")
-			{
-				string commandLine = $@"SELECT teacher_id, last_name, first_name, middle_name, birth_date, work_since, rate
+			string commandLine = $@"SELECT teacher_id, last_name, first_name, middle_name, birth_date, work_since, rate
 				FROM Teachers";
-				LoadDataToTable(commandLine);
-			}
-			else
-			{
-				string commandLine = $@"SELECT teacher_id, last_name, first_name, middle_name, birth_date, work_since, rate
-				FROM Teachers, SpecialitiesTeachersRelation, Specialities WHERE teacher_id = teacher AND speciality_id = speciality AND speciality_name = '{cbSpecialities.SelectedItem}'";
-				LoadDataToTable(commandLine);
-			}
-			dgvTeachers.DataSource = table;
+			if (cbSpecialities.SelectedItem.ToString() != "ALL") 
+				commandLine += $@", SpecialitiesTeachersRelation, Specialities WHERE teacher_id = teacher AND speciality_id = speciality AND speciality_name = '{cbSpecialities.SelectedItem}'";
+			LoadDataToTable(dgvTeachers, commandLine);
 		}
 
 		private void btnDeleteStudent_Click(object sender, EventArgs e)
@@ -231,20 +218,20 @@ namespace Academy
 
 		private void rtbSearch_TextChanged(object sender, EventArgs e)
 		{
-			string commandLine = $@"SELECT Students.last_name, Students.first_name, Students.middle_name, Students.birth_date, Groups.group_name 
+			string commandLine = $@"SELECT Students.stud_id, Students.last_name, Students.first_name, Students.middle_name, Students.birth_date, Groups.group_name 
 			FROM Students, Groups WHERE Students.[group] = Groups.group_id AND (Students.last_name LIKE '{rtbStudSearch.Text}%' 
 			OR Students.first_name LIKE '{rtbStudSearch.Text}%' OR Students.middle_name LIKE '{rtbStudSearch.Text}%')";
-			LoadDataToTable(commandLine);
-			dgvStudents.DataSource = table;
+			LoadDataToTable(dgvStudents, commandLine);
 		}
 
 		private void cbDirections_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			string commandLine = $@"SELECT last_name, first_name, middle_name, birth_date, group_name, direction_name 
 			FROM Students, Groups, Directions
-			WHERE direction = direction_id AND [group] = group_id AND direction_name = '{cbDirections.SelectedItem}'";
-			LoadDataToTable(commandLine);
-			dgvStudents.DataSource = table;
+			WHERE direction = direction_id AND [group] = group_id";
+			if(cbDirections.SelectedItem.ToString() != "ALL")
+				commandLine += $@" AND direction_name = '{cbDirections.SelectedItem}'";
+			LoadDataToTable(dgvStudents, commandLine);
 		}
 		
 		private void dgvStudents_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -260,25 +247,23 @@ namespace Academy
 			FROM Teachers 
 			WHERE (Teachers.last_name LIKE '{rtbTeacherSearch.Text}%' 
 			OR Teachers.first_name LIKE '{rtbTeacherSearch.Text}%' OR Teachers.middle_name LIKE '{rtbTeacherSearch.Text}%')";
-			LoadDataToTable(commandLine);
-			dgvTeachers.DataSource = table;
+			LoadDataToTable(dgvTeachers, commandLine);
 		}
 
 		private void cbGroupsDirections_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (cbGroupsDirections.SelectedItem.ToString() == "ALL")
-			{
-				string commandLine = $@"SELECT Groups.group_name, Directions.direction_name FROM Groups, Directions
+			string commandLine = $@"SELECT Groups.group_name, Directions.direction_name FROM Groups, Directions
 				WHERE Directions.direction_id = Groups.direction";
-				LoadDataToTable(commandLine); 
-			}
-			else
-			{
-				string commandLine = $@"SELECT Groups.group_name, Directions.direction_name FROM Groups, Directions
-				WHERE Directions.direction_id = Groups.direction AND Directions.direction_name = '{cbGroupsDirections.Text}'";
-				LoadDataToTable(commandLine);
-			}
-			dgvGroups.DataSource = table;
+			if (cbGroupsDirections.SelectedItem.ToString() != "ALL") 
+				commandLine += $@" AND Directions.direction_name = '{cbGroupsDirections.Text}'";
+			LoadDataToTable(dgvGroups, commandLine);
+		}
+
+		private void btnAddGroup_Click(object sender, EventArgs e)
+		{
+			NewGroup newGroup = new NewGroup(connection);
+			LoadDirectionsToComboBox(newGroup.comboBoxDirection);
+			newGroup.ShowDialog(this);
 		}
 	}
 }
