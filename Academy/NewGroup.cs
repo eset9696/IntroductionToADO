@@ -24,9 +24,11 @@ namespace Academy
 		{
 			InitializeComponent();
 			this.connection = connection;
+			
 			LoadLearningData(cbGroupLearningForm, @"SELECT LForm_name FROM LearningForm");
 			LoadLearningData(cbGroupLearningTime, @"SELECT LStandartTime FROM LearningTime");
 			LoadLearningDays();
+			
 		}
 
 		private void LoadLearningData(System.Windows.Forms.ComboBox comboBox, string commandLine)

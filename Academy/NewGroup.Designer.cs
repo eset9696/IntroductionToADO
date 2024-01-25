@@ -35,7 +35,6 @@
 			this.chlbDaysOfWeek = new System.Windows.Forms.CheckedListBox();
 			this.btnNewGroupClose = new System.Windows.Forms.Button();
 			this.btnNewGroupOk = new System.Windows.Forms.Button();
-			this.labeltest = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// cbGroupDirection
@@ -104,21 +103,11 @@
 			this.btnNewGroupOk.UseVisualStyleBackColor = true;
 			this.btnNewGroupOk.Click += new System.EventHandler(this.btnNewGroupOk_Click);
 			// 
-			// labeltest
-			// 
-			this.labeltest.AutoSize = true;
-			this.labeltest.Location = new System.Drawing.Point(13, 144);
-			this.labeltest.Name = "labeltest";
-			this.labeltest.Size = new System.Drawing.Size(35, 13);
-			this.labeltest.TabIndex = 5;
-			this.labeltest.Text = "label1";
-			// 
 			// NewGroup
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(570, 179);
-			this.Controls.Add(this.labeltest);
 			this.Controls.Add(this.btnNewGroupOk);
 			this.Controls.Add(this.btnNewGroupClose);
 			this.Controls.Add(this.chlbDaysOfWeek);
@@ -129,7 +118,6 @@
 			this.Name = "NewGroup";
 			this.Text = "New group";
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 
@@ -142,6 +130,5 @@
 		private System.Windows.Forms.CheckedListBox chlbDaysOfWeek;
 		private System.Windows.Forms.Button btnNewGroupClose;
 		private System.Windows.Forms.Button btnNewGroupOk;
-		private System.Windows.Forms.Label labeltest;
 	}
 }

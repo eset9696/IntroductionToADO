@@ -263,6 +263,7 @@ namespace Academy
 		{
 			NewGroup newGroup = new NewGroup(connection);
 			LoadDirectionsToComboBox(newGroup.comboBoxDirection);
+			newGroup.comboBoxDirection.Items.Remove("ALL");
 			newGroup.ShowDialog(this);
 		}
 	}
