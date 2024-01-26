@@ -24,17 +24,16 @@ namespace Academy
 			InitializeComponent();
 			connectionString = ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
 			connection = new SqlConnection(connectionString);
-			LoadGroupsToComboBox(cbGroups);
-			LoadSpecialitiesToComboBox(cbSpecialities);
-			LoadDirectionsToComboBox(cbGroupsDirections);
-			LoadDirectionsToComboBox(cbDirections);
+			LoadDataToComboBox(cbGroups, @"SELECT group_name FROM Groups");
+			LoadDataToComboBox(cbSpecialities, @"SELECT speciality_name FROM Specialities");
+			LoadDataToComboBox(cbGroupsDirections, @"SELECT direction_name FROM Directions");
+			LoadDataToComboBox(cbDirections, @"SELECT direction_name FROM Directions");
 		}
 
-		private void LoadGroupsToComboBox(System.Windows.Forms.ComboBox comboBox)
+		private void LoadDataToComboBox(System.Windows.Forms.ComboBox comboBox, string commandLine)
 		{
 			try
 			{
-				string commandLine = $@"SELECT group_name FROM Groups";
 				SqlCommand cmd = new SqlCommand(commandLine, connection);
 				connection.Open();
 				reader = cmd.ExecuteReader();
@@ -50,56 +49,6 @@ namespace Academy
 			}
 			finally
 			{ 
-				reader?.Close();
-				connection?.Close();
-			}
-		}
-
-		private void LoadSpecialitiesToComboBox(System.Windows.Forms.ComboBox comboBox)
-		{
-			try
-			{
-				string commandLine = $@"SELECT speciality_name FROM Specialities";
-				SqlCommand cmd = new SqlCommand(commandLine, connection);
-				connection.Open();
-				reader = cmd.ExecuteReader();
-				comboBox.Items.Add("ALL");
-				while (reader.Read())
-				{
-					comboBox.Items.Add(reader[0]);
-				}
-			}
-			catch (Exception e)
-			{
-				MessageBox.Show(this, e.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
-			finally
-			{
-				reader?.Close();
-				connection?.Close();
-			}
-		}
-
-		private void LoadDirectionsToComboBox(System.Windows.Forms.ComboBox comboBox)
-		{
-			try
-			{
-				string commandLine = $@"SELECT direction_name FROM Directions";
-				SqlCommand cmd = new SqlCommand(commandLine, connection);
-				connection.Open();
-				reader = cmd.ExecuteReader();
-				comboBox.Items.Add("ALL");
-				while (reader.Read())
-				{
-					comboBox.Items.Add(reader[0]);
-				}
-			}
-			catch (Exception e)
-			{
-				MessageBox.Show(this, e.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
-			finally
-			{
 				reader?.Close();
 				connection?.Close();
 			}
@@ -141,7 +90,7 @@ namespace Academy
 		private void btnAddStudent_Click(object sender, EventArgs e)
 		{
 			AddStudent addStudent = new AddStudent(connection);
-			LoadGroupsToComboBox(addStudent.groupCombo);
+			LoadDataToComboBox(addStudent.groupCombo, @"SELECT group_name FROM Groups");
 			DialogResult result = addStudent.ShowDialog(this);
 
 		}
@@ -262,7 +211,7 @@ namespace Academy
 		private void btnAddGroup_Click(object sender, EventArgs e)
 		{
 			NewGroup newGroup = new NewGroup(connection);
-			LoadDirectionsToComboBox(newGroup.comboBoxDirection);
+			LoadDataToComboBox(newGroup.comboBoxDirection, @"SELECT direction_name FROM Directions");
 			newGroup.comboBoxDirection.Items.Remove("ALL");
 			newGroup.ShowDialog(this);
 		}
